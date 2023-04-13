@@ -1,6 +1,6 @@
 //connect mongoDB
-const server = "mongodb://127.0.0.1:27017";
-const database = "sem3_nodejs";
+const server = process.env.MONGODB_URI;
+const database =process.env.DB_NAME;
 let mongoose = require("mongoose");
 
 class Database{
@@ -10,7 +10,7 @@ class Database{
     __connect(){
         mongoose.connect(`${server}/${database}`)
             .then(()=>{
-                console.log("connecting...");
+                console.log("connected");
             })
             .catch(()=>{
                 console.log(err);
